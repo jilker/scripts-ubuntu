@@ -27,7 +27,8 @@ options=(1 "Terminator" off
          4 "Git" off
          5 "ROS Melodic" off
          6 "Htop" off
-         7 "Microsoft Teams" off)
+         7 "Microsoft Teams" off
+         8 "Google Chrome" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 for choice in $choices
@@ -76,11 +77,16 @@ for choice in $choices
             7)
                 #Install Teams
                 center "Installing Teams"
-                center "Installing Teams"
                 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
                 sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
                 apt update
                 apt install teams -y
+                ;;
+            8)
+                #Install Google Chrome
+                wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+                dpkg -i google-chrome-stable_current_amd64.deb
+                rm google-chrome-stable_current_amd64.deb
                 ;;
     esac
 done
