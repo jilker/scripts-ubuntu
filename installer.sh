@@ -77,7 +77,7 @@ for choice in $choices; do
     6)
         #Install Htop
         center "Installing htop"
-        apt install htop -y
+        sudo apt install htop -y
         ;;
     7)
         #Install Teams
